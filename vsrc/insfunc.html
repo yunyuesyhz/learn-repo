@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vm.$watch | 云深不知处</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="JavaScript 学习">
+    
+    <link rel="preload" href="/learn-repo/assets/css/0.styles.52a94e0b.css" as="style"><link rel="preload" href="/learn-repo/assets/js/app.1c28de55.js" as="script"><link rel="preload" href="/learn-repo/assets/js/3.14e5b99f.js" as="script"><link rel="preload" href="/learn-repo/assets/js/1.7fd08403.js" as="script"><link rel="preload" href="/learn-repo/assets/js/22.effcb5d1.js" as="script"><link rel="prefetch" href="/learn-repo/assets/js/10.e8885f8d.js"><link rel="prefetch" href="/learn-repo/assets/js/11.c18a558b.js"><link rel="prefetch" href="/learn-repo/assets/js/12.684d6508.js"><link rel="prefetch" href="/learn-repo/assets/js/13.bd047f6b.js"><link rel="prefetch" href="/learn-repo/assets/js/14.a8ce1ab1.js"><link rel="prefetch" href="/learn-repo/assets/js/15.69afa17f.js"><link rel="prefetch" href="/learn-repo/assets/js/16.c8e59fd7.js"><link rel="prefetch" href="/learn-repo/assets/js/17.6de4f02d.js"><link rel="prefetch" href="/learn-repo/assets/js/18.ba6d85cb.js"><link rel="prefetch" href="/learn-repo/assets/js/19.606dd913.js"><link rel="prefetch" href="/learn-repo/assets/js/20.bc9c3e6b.js"><link rel="prefetch" href="/learn-repo/assets/js/21.db516907.js"><link rel="prefetch" href="/learn-repo/assets/js/23.5ce41381.js"><link rel="prefetch" href="/learn-repo/assets/js/4.35597f61.js"><link rel="prefetch" href="/learn-repo/assets/js/5.2d78a80a.js"><link rel="prefetch" href="/learn-repo/assets/js/6.920dc3bb.js"><link rel="prefetch" href="/learn-repo/assets/js/7.6c9ed832.js"><link rel="prefetch" href="/learn-repo/assets/js/8.dc793827.js"><link rel="prefetch" href="/learn-repo/assets/js/9.8138dceb.js">
+    <link rel="stylesheet" href="/learn-repo/assets/css/0.styles.52a94e0b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-5bb33761><div data-v-5bb33761><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-5bb33761 data-v-5bb33761><h3 class="title" data-v-59e6cb88>云深不知处</h3> <p class="description" data-v-59e6cb88>JavaScript 学习</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2022
+      </a></span></div></div> <div class="hide" data-v-5bb33761><header class="navbar" data-v-5bb33761><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/learn-repo/" class="home-link router-link-active"><!----> <span class="site-name">云深不知处</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/learn-repo/" class="nav-link"><i class="undefined"></i>
+  Principal
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Yunyue 的 JavaScript 博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/yunyuesyhz" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-5bb33761></div> <aside class="sidebar" data-v-5bb33761><div class="personal-info-wrapper" data-v-1fad0c41 data-v-5bb33761><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>7</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>0</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/learn-repo/" class="nav-link"><i class="undefined"></i>
+  Principal
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      Yunyue 的 JavaScript 博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/yunyuesyhz" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/learn-repo/basic/vue3" class="sidebar-heading clickable"><span>Vue基础</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/learn-repo/basic/vue3.html" class="sidebar-link">Vue3</a></li><li><a href="/learn-repo/basic/vue-life.html" class="sidebar-link">Vue生命周期</a></li><li><a href="/learn-repo/basic/vnode.html" class="sidebar-link">Vnode</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/learn-repo/vsrc/init" class="sidebar-heading clickable open"><span>Vue源码</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/learn-repo/vsrc/init.html" class="sidebar-link">Vue初始化</a></li><li><a href="/learn-repo/vsrc/asyncupdate.html" class="sidebar-link">Vue异步更新</a></li><li><a href="/learn-repo/vsrc/globalapi.html" class="sidebar-link">Vue全局API</a></li><li><a href="/learn-repo/vsrc/insfunc.html" aria-current="page" class="active sidebar-link">Vue实例方法</a></li><li><a href="/learn-repo/vsrc/hook_event.html" class="sidebar-link">Vue Hook-Event</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/learn-repo/JS_basic/js_one" class="sidebar-heading clickable"><span>JS理解</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/learn-repo/JS_basic/js_one.html" class="sidebar-link">JS理解（上）</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/learn-repo/typescript/ts_base_1" class="sidebar-heading clickable"><span>TypeScript</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/learn-repo/typescript/ts_base_1.html" class="sidebar-link">TS First</a></li><li><a href="/learn-repo/typescript/ts_base_2.html" class="sidebar-link">TS Second</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/learn-repo/webpack/webpack_base" class="sidebar-heading clickable"><span>Webpack</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/learn-repo/webpack/webpack_base.html" class="sidebar-link">Webpack基础</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/learn-repo/react/react_base" class="sidebar-heading clickable"><span>React</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/learn-repo/react/react_base.html" class="sidebar-link">React 嗷~</a></li></ul></section></li><li><a href="/learn-repo/" aria-current="page" class="sidebar-link">欢迎学习</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-5bb33761><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2022
+      </a></span></div></div> <div data-v-5bb33761><div data-v-5bb33761><main class="page" style="padding-right:0;"><section style="display:;"><div class="page-title"><h1 class="title">vm.$watch</h1> <div data-v-8a445198><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="vm-watch"><a href="#vm-watch" class="header-anchor">#</a> vm.$watch</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 创建 watcher，返回 unwatch，共完成如下 5 件事：
+ *   1、兼容性处理，保证最后 new Watcher 时的 cb 为函数
+ *   2、标识用户 watcher
+ *   3、创建 watcher 实例
+ *   4、如果设置了 immediate，则立即执行一次 cb
+ *   5、返回 unwatch
+ * @param {*} expOrFn key
+ * @param {*} cb 回调函数
+ * @param {*} options 配置项，用户直接调用 this.$watch 时可能会传递一个 配置项
+ * @returns 返回 unwatch 函数，用于取消 watch 监听
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$watch</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>
+  expOrFn<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">Function</span><span class="token punctuation">,</span>
+  cb<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> Object
+<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Function</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token comment">// 兼容性处理，因为用户调用 vm.$watch 时设置的 cb 可能是对象</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPlainObject</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// cb 是否是一个对象</span>
+    <span class="token keyword">return</span> <span class="token function">createWatcher</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> expOrFn<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// options.user 表示用户 watcher，还有渲染 watcher，即 updateComponent 方法中实例化的 watcher</span>
+  options <span class="token operator">=</span> options <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  options<span class="token punctuation">.</span>user <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// 创建 watcher</span>
+  <span class="token keyword">const</span> watcher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> expOrFn<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token comment">// 如果用户设置了 immediate 为 true，则立即执行一次回调函数</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token function">cb</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> watcher<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">handleError</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">callback for immediate watcher &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>watcher<span class="token punctuation">.</span>expression<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot;</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 返回一个 unwatch 函数，用于解除监听</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">unwatchFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    watcher<span class="token punctuation">.</span><span class="token function">teardown</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$watch 做了什么？</p></blockquote> <p>负责观察 Vue 实例上的一个表达式或者一个函数计算结果的变化。当其发生变化时，回调函数就会被执行，并为回调函数传递两个参数，第一个为更新后的新值，第二个为老值。
+这里需要 <strong>注意</strong> 一点的是：如果观察的是一个对象，比如：数组，当用数组方法，比如 push 为数组新增一个元素时，回调函数被触发时传递的新值和老值相同，<strong>因为它们指向同一个引用</strong>
+vm.$watch 的第一个参数只接收简单的响应式数据的键路径，对于更复杂的表达式应使用函数作为第一个参数。
+vm.$watch 的内部原理是：</p> <ul><li>设置 options.user = true，标志这是一个用户 watcher</li> <li>实例化一个 Watcher 实例，当检测到数据更新时，通过 watcher 去触发回调函数的执行，并传递新老值作为回调函数的参数</li> <li>返回一个 unwatch 函数，用于取消观察</li></ul> <h2 id="vm-on"><a href="#vm-on" class="header-anchor">#</a> vm.$on</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token keyword">const</span> hookRE <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^hook:</span><span class="token regex-delimiter">/</span></span>
+<span class="token comment">/**
+ * 监听实例上的自定义事件，vm._event = { eventName: [fn1, ...], ... }
+ * @param {*} event 单个的事件名称或者由多个事件名组成的数组
+ * @param {*} fn 当 event 被触发时执行的回调函数
+ * @returns 
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$on</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> fn<span class="token operator">:</span> <span class="token builtin">Function</span><span class="token punctuation">)</span><span class="token operator">:</span> Component <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// event 是有多个事件名组成的数组，则遍历这些事件，依次递归调用 $on</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> event<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span>event<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 将注册的事件和回调以键值对的形式存储到 vm._event 对象中 vm._event = { eventName: [fn1, ...] }</span>
+    <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
+    <span class="token comment">// hookEvent，提供从外部为组件实例注入声明周期方法的机会</span>
+    <span class="token comment">// 比如从组件外部为组件的 mounted 方法注入额外的逻辑</span>
+    <span class="token comment">// 该能力是结合 callhook 方法实现的</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hookRE<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      vm<span class="token punctuation">.</span>_hasHookEvent <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> vm
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$on() 做了什么？</p></blockquote> <p>监听当前实例上的自定义事件，事件可由 vm.$emit 触发，回调函数会接收所有传入事件触发函数（vm.$emit）的额外参数。
+vm.$on 的原理，就是处理传递的 event 和 callback 两个参数，将注册的事件和回调函数以键值对的形式存储到 vm._event 对象中，vm._events = { eventName: [cb1, cb2, ...], ... }。</p> <h2 id="vm-emit"><a href="#vm-emit" class="header-anchor">#</a> vm.$emit</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 触发实例上的指定事件，vm._event[event] =&gt; cbs =&gt; loop cbs =&gt; cb(args)
+ * @param {*} event 事件名
+ * @returns 
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$emit</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> Component <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 将事件名转换为小写</span>
+    <span class="token keyword">const</span> lowerCaseEvent <span class="token operator">=</span> event<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// HTML 属性不区分大小写，所以不能使用 v-on 监听小驼峰形式的事件名（eventName），而应该使用连字符形式的事件名（event-name)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>lowerCaseEvent <span class="token operator">!==</span> event <span class="token operator">&amp;&amp;</span> vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>lowerCaseEvent<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">tip</span><span class="token punctuation">(</span>
+        <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Event &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lowerCaseEvent<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot; is emitted in component </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+        <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">formatComponentName</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> but the handler is registered for &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>event<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot;. </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+        <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Note that HTML attributes are case-insensitive and you cannot use </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+        <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">v-on to listen to camelCase events when using in-DOM templates. </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+        <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You should probably use &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">hyphenate</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot; instead of &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>event<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot;.</span><span class="token template-punctuation string">`</span></span>
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 从 vm._event 对象上拿到当前事件的回调函数数组，并依次调用数组中的回调函数，并且传递提供的参数</span>
+  <span class="token keyword">let</span> cbs <span class="token operator">=</span> vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cbs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    cbs <span class="token operator">=</span> cbs<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token operator">?</span> <span class="token function">toArray</span><span class="token punctuation">(</span>cbs<span class="token punctuation">)</span> <span class="token operator">:</span> cbs
+    <span class="token keyword">const</span> args <span class="token operator">=</span> <span class="token function">toArray</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> info <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">event handler for &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>event<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot;</span><span class="token template-punctuation string">`</span></span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> cbs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">invokeWithErrorHandling</span><span class="token punctuation">(</span>cbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> vm<span class="token punctuation">,</span> args<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> info<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> vm
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$emit() 做了什么?</p></blockquote> <p>触发当前实例上的指定事件，附加参数都会传递给事件的回调函数。
+其内部原理就是执行 vm._events[eventName] 中所有的回调函数。</p> <h2 id="vm-off"><a href="#vm-off" class="header-anchor">#</a> vm.$off</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 移除自定义事件监听器，即从 vm._event 对象中找到对应的事件，移除所有事件 或者 移除指定事件的回调函数
+ * @param {*} event 
+ * @param {*} fn 
+ * @returns 
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$off</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">Array</span><span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> fn<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">Function</span><span class="token punctuation">)</span><span class="token operator">:</span> Component <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+	<span class="token comment">// 若未传任何参数</span>
+  <span class="token comment">// vm.$off() 移除实例上的所有监听器 =&gt; vm._events = {}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>arguments<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>_events <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> vm
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 移除一些事件 event = [event1, ...]，遍历 event 数组，递归调用 vm.$off</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> event<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      vm<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span>event<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> vm
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 除了 vm.$off() 之外，最终都会走到这里，移除指定事件</span>
+  <span class="token keyword">const</span> cbs <span class="token operator">=</span> vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cbs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 表示没有注册过该事件</span>
+    <span class="token keyword">return</span> vm
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 没有提供 fn 回调函数，则移除该事件的所有回调函数，vm._event[event] = null</span>
+    vm<span class="token punctuation">.</span>_events<span class="token punctuation">[</span>event<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token keyword">return</span> vm
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 移除指定事件的指定回调函数，就是从事件的回调数组中找到该回调函数，然后删除</span>
+  <span class="token keyword">let</span> cb
+  <span class="token keyword">let</span> i <span class="token operator">=</span> cbs<span class="token punctuation">.</span>length
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    cb <span class="token operator">=</span> cbs<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cb <span class="token operator">===</span> fn <span class="token operator">||</span> cb<span class="token punctuation">.</span>fn <span class="token operator">===</span> fn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token comment">// 从回调函数数组中移除指定函数</span>
+      cbs<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token keyword">break</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> vm
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$off([event, callback]) 做了什么？</p></blockquote> <p>移除自定义事件监听器，即移除 vm._events 对象上相关数据。</p> <ul><li>如果没有提供参数，则移除实例的所有事件监听</li> <li>如果只提供了 event 参数，则移除实例上该事件的所有监听器</li> <li>如果两个参数都提供了，则移除实例上该事件对应的监听器</li></ul> <h2 id="vm-once"><a href="#vm-once" class="header-anchor">#</a> vm.$once</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 监听一个自定义事件，但是只触发一次。一旦触发之后，监听器就会被移除
+ * vm.$on + vm.$off
+ * @param {*} event 
+ * @param {*} fn 
+ * @returns 
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$once</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> fn<span class="token operator">:</span> <span class="token builtin">Function</span><span class="token punctuation">)</span><span class="token operator">:</span> Component <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+
+  <span class="token comment">// 调用 $on，只是 $on 的回调函数被特殊处理了</span>
+	<span class="token comment">// 触发时，执行回调函数，先移除事件监听，然后执行设置的回调函数</span>
+  <span class="token keyword">function</span> <span class="token function">on</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> on<span class="token punctuation">)</span>
+    <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  on<span class="token punctuation">.</span>fn <span class="token operator">=</span> fn
+  vm<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> on<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> vm
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$once(event, callback) 做了什么？</p></blockquote> <p>监听一个自定义事件，但是该事件只会被触发一次。一旦触发以后监听器就会被移除。
+其内部的实现原理是：</p> <ul><li>包装用户传递的回调函数，当包装函数执行的时候，除了会执行用户回调函数之外还会在这之前执行 vm.$off(event, 包装函数) 移除该事件</li> <li>用 vm.$on(event, 包装函数) 注册事件</li></ul> <h2 id="vm-update"><a href="#vm-update" class="header-anchor">#</a> vm._update</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 负责更新页面，页面首次渲染和后续更新的入口位置，也是 patch 的入口位置 
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_update</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>vnode<span class="token operator">:</span> VNode<span class="token punctuation">,</span> hydrating<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">const</span> prevEl <span class="token operator">=</span> vm<span class="token punctuation">.</span>$el <span class="token comment">// 旧真实节点</span>
+  <span class="token keyword">const</span> prevVnode <span class="token operator">=</span> vm<span class="token punctuation">.</span>_vnode <span class="token comment">// 旧虚拟节点</span>
+  <span class="token keyword">const</span> restoreActiveInstance <span class="token operator">=</span> <span class="token function">setActiveInstance</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token comment">// 恢复激活的实例</span>
+  vm<span class="token punctuation">.</span>_vnode <span class="token operator">=</span> vnode <span class="token comment">// 保存一下当前的虚拟节点</span>
+  <span class="token comment">// Vue.prototype.__patch__ is injected in entry points</span>
+  <span class="token comment">// based on the rendering backend used.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>prevVnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 首次渲染，即初始化页面时走这里</span>
+    vm<span class="token punctuation">.</span>$el <span class="token operator">=</span> vm<span class="token punctuation">.</span><span class="token function">__patch__</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$el<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> hydrating<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token comment">/* removeOnly */</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 响应式数据更新时，即更新页面时走这里</span>
+    vm<span class="token punctuation">.</span>$el <span class="token operator">=</span> vm<span class="token punctuation">.</span><span class="token function">__patch__</span><span class="token punctuation">(</span>prevVnode<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">restoreActiveInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// update __vue__ reference</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>prevEl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    prevEl<span class="token punctuation">.</span>__vue__ <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>$el<span class="token punctuation">.</span>__vue__ <span class="token operator">=</span> vm
+  <span class="token punctuation">}</span>
+  <span class="token comment">// if parent is an HOC, update its $el as well</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$vnode <span class="token operator">&amp;&amp;</span> vm<span class="token punctuation">.</span>$parent <span class="token operator">&amp;&amp;</span> vm<span class="token punctuation">.</span>$vnode <span class="token operator">===</span> vm<span class="token punctuation">.</span>$parent<span class="token punctuation">.</span>_vnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>$parent<span class="token punctuation">.</span>$el <span class="token operator">=</span> vm<span class="token punctuation">.</span>$el
+  <span class="token punctuation">}</span>
+  <span class="token comment">// updated hook is called by the scheduler to ensure that children are</span>
+  <span class="token comment">// updated in a parent's updated hook.</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre></div><p>用于源码内部的实例方法，负责更新页面，是页面渲染的入口，其内部根据是否存在 prevVnode 来决定是首次渲染，还是页面更新，从而在调用 <strong>patch</strong> 函数时传递不同的参数</p> <h2 id="vm-forceupdate"><a href="#vm-forceupdate" class="header-anchor">#</a> vm.$forceupdate</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 直接调用 watcher.update 方法，迫使组件重新渲染。
+ * 它仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$forceUpdate</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_watcher<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// vm._watcher 指向渲染watcher</span>
+    vm<span class="token punctuation">.</span>_watcher<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$forceupdate() 做了什么？</p></blockquote> <p>迫使 Vue 实例重新渲染，它仅仅影响组件实例本身和插入插槽内容的子组件，而不是所有子组件。其内部原理，就是直接调用 <code>vm._watcher.update()</code>，它就是 <code>watcher.update()</code>方法，执行该方法触发组件更新。</p> <h2 id="vm-destroy"><a href="#vm-destroy" class="header-anchor">#</a> vm.$destroy</h2> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">$destroy</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_isBeingDestroyed<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 表示实例已经销毁</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 调用 beforeDestroy 钩子</span>
+  <span class="token function">callHook</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> <span class="token string">'beforeDestroy'</span><span class="token punctuation">)</span>
+  <span class="token comment">// 标识实例已经销毁</span>
+  vm<span class="token punctuation">.</span>_isBeingDestroyed <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// 把自己从父组件（$parent)的肚子里（$children）移除</span>
+  <span class="token keyword">const</span> parent <span class="token operator">=</span> vm<span class="token punctuation">.</span>$parent
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>parent<span class="token punctuation">.</span>_isBeingDestroyed <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>vm<span class="token punctuation">.</span>$options<span class="token punctuation">.</span><span class="token keyword">abstract</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">remove</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>$children<span class="token punctuation">,</span> vm<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 移除依赖监听</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_watcher<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>_watcher<span class="token punctuation">.</span><span class="token function">teardown</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> vm<span class="token punctuation">.</span>_watchers<span class="token punctuation">.</span>length
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>_watchers<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">teardown</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// remove reference from data ob</span>
+  <span class="token comment">// frozen object may not have observer.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_data<span class="token punctuation">.</span>__ob__<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>_data<span class="token punctuation">.</span>__ob__<span class="token punctuation">.</span>vmCount<span class="token operator">--</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// call the last hook...</span>
+  vm<span class="token punctuation">.</span>_isDestroyed <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// 调用 __patch__，销毁节点</span>
+  vm<span class="token punctuation">.</span><span class="token function">__patch__</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_vnode<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+  <span class="token comment">// 调用 destroyed 钩子</span>
+  <span class="token function">callHook</span><span class="token punctuation">(</span>vm<span class="token punctuation">,</span> <span class="token string">'destroyed'</span><span class="token punctuation">)</span>
+  <span class="token comment">// 关闭实例的所有事件监听</span>
+  vm<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// remove __vue__ reference</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>$el<span class="token punctuation">.</span>__vue__ <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// release circular reference (#6759)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>$vnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>$vnode<span class="token punctuation">.</span>parent <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>vm.$destroy() 做了什么？</p></blockquote> <p>负责完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令和事件监听器。在执行过程中会调用 beforeDestroy 和 destroy 两个钩子函数。在大多数业务开发场景下用不到该方法，一般都通过 v-if 指令来操作。其内部原理是：</p> <ul><li>调用 beforeDestroy 钩子函数</li> <li>将自己从父组件肚子里（$parent）移除，从而销毁和老爹的关系</li> <li>通过<code>watcher.teardown()</code>来移除依赖监听</li> <li>通过 <code>vm.__patch__(vnode, null)</code>方法来销毁节点</li> <li>调用 destroyed 钩子函数</li> <li>通过 <code>vm.$off</code> 方法移除所有的事件监听</li></ul> <h2 id="vm-render"><a href="#vm-render" class="header-anchor">#</a> vm._render</h2> <p><strong>通过执行 render 函数生成 vnode</strong></p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">/**
+ * 通过执行 render 函数生成 VNode
+ * 不过里面加了大量的异常处理代码
+ */</span>
+Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">_render</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> VNode <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> vm<span class="token operator">:</span> Component <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> _parentVnode <span class="token punctuation">}</span> <span class="token operator">=</span> vm<span class="token punctuation">.</span>$options
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>_parentVnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vm<span class="token punctuation">.</span>$scopedSlots <span class="token operator">=</span> <span class="token function">normalizeScopedSlots</span><span class="token punctuation">(</span>
+      _parentVnode<span class="token punctuation">.</span>data<span class="token punctuation">.</span>scopedSlots<span class="token punctuation">,</span>
+      vm<span class="token punctuation">.</span>$slots<span class="token punctuation">,</span>
+      vm<span class="token punctuation">.</span>$scopedSlots
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 设置父 vnode。这使得渲染函数可以访问占位符节点上的数据。</span>
+  vm<span class="token punctuation">.</span>$vnode <span class="token operator">=</span> _parentVnode
+  <span class="token comment">// render self</span>
+  <span class="token keyword">let</span> vnode
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    currentRenderingInstance <span class="token operator">=</span> vm
+    <span class="token comment">// 执行 render 函数，生成 vnode</span>
+    vnode <span class="token operator">=</span> <span class="token function">render</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_renderProxy<span class="token punctuation">,</span> vm<span class="token punctuation">.</span>$createElement<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">handleError</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">render</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token comment">// 到这儿，说明执行 render 函数时出错了</span>
+    <span class="token comment">// 开发环境渲染错误信息，生产环境返回之前的 vnode，以防止渲染错误导致组件空白</span>
+    <span class="token comment">/* istanbul ignore else */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span> vm<span class="token punctuation">.</span>$options<span class="token punctuation">.</span>renderError<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        vnode <span class="token operator">=</span> vm<span class="token punctuation">.</span>$options<span class="token punctuation">.</span><span class="token function">renderError</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span>_renderProxy<span class="token punctuation">,</span> vm<span class="token punctuation">.</span>$createElement<span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">handleError</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">renderError</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        vnode <span class="token operator">=</span> vm<span class="token punctuation">.</span>_vnode
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      vnode <span class="token operator">=</span> vm<span class="token punctuation">.</span>_vnode
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    currentRenderingInstance <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 如果返回的 vnode 是数组，并且只包含了一个元素，则直接打平</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> vnode<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vnode <span class="token operator">=</span> vnode<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// render 函数出错时，返回一个空的 vnode</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>vnode <span class="token keyword">instanceof</span> <span class="token class-name">VNode</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin">Array</span><span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">warn</span><span class="token punctuation">(</span>
+        <span class="token string">'Multiple root nodes returned from render function. Render function '</span> <span class="token operator">+</span>
+        <span class="token string">'should return a single root node.'</span><span class="token punctuation">,</span>
+        vm
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    vnode <span class="token operator">=</span> <span class="token function">createEmptyVNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// set parent</span>
+  vnode<span class="token punctuation">.</span>parent <span class="token operator">=</span> _parentVnode
+  <span class="token keyword">return</span> vnode
+<span class="token punctuation">}</span>
+
+</code></pre></div></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/learn-repo/vsrc/globalapi.html" class="prev">
+          Vue全局API
+        </a></span> <span class="next"><a href="/learn-repo/vsrc/hook_event.html">
+          Vue Hook-Event
+        </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-ac050c62></ul></main></div> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/learn-repo/assets/js/app.1c28de55.js" defer></script><script src="/learn-repo/assets/js/3.14e5b99f.js" defer></script><script src="/learn-repo/assets/js/1.7fd08403.js" defer></script><script src="/learn-repo/assets/js/22.effcb5d1.js" defer></script>
+  </body>
+</html>
